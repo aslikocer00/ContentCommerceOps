@@ -1,0 +1,45 @@
+<section class="form">
+  <header>
+    <h1>{{ contentId ? 'Edit Content' : 'Create Content' }}</h1>
+    <p>Capture the essential metadata for this editorial piece.</p>
+  </header>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <label>
+      Title
+      <input type="text" formControlName="title" />
+    </label>
+    <label>
+      Category
+      <select formControlName="category">
+        <option value="fashion">Fashion</option>
+        <option value="beauty">Beauty</option>
+        <option value="lifestyle">Lifestyle</option>
+      </select>
+    </label>
+    <label>
+      Status
+      <select formControlName="status">
+        <option value="draft">Draft</option>
+        <option value="scheduled">Scheduled</option>
+        <option value="published">Published</option>
+      </select>
+    </label>
+    <label>
+      Author
+      <input type="text" formControlName="author" />
+    </label>
+    <label>
+      Publish Date
+      <input type="date" formControlName="publishDate" />
+    </label>
+    <label>
+      Summary
+      <textarea rows="4" formControlName="summary"></textarea>
+    </label>
+
+    <button type="submit" class="primary" [disabled]="loading">
+      {{ loading ? 'Saving...' : 'Save' }}
+    </button>
+  </form>
+</section>

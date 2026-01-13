@@ -1,0 +1,32 @@
+<section class="preview" *ngIf="newsletter">
+  <header>
+    <h1>Newsletter Preview</h1>
+    <p>Desktop + mobile snapshots for {{ newsletter.subject }}</p>
+  </header>
+
+  <div class="frames">
+    <div class="frame desktop">
+      <h3>{{ newsletter.subject }}</h3>
+      <div class="hero">
+        <strong>Hero</strong>
+        <p>{{ getContentTitle(newsletter.heroContentId) }}</p>
+      </div>
+      <div class="block" *ngFor="let block of newsletter.blocks">
+        <span>{{ block.title }}</span>
+        <strong>{{ getContentTitle(block.contentId) }}</strong>
+      </div>
+    </div>
+
+    <div class="frame mobile">
+      <h3>{{ newsletter.subject }}</h3>
+      <div class="hero">
+        <strong>Hero</strong>
+        <p>{{ getContentTitle(newsletter.heroContentId) }}</p>
+      </div>
+      <div class="block" *ngFor="let block of newsletter.blocks">
+        <span>{{ block.title }}</span>
+        <strong>{{ getContentTitle(block.contentId) }}</strong>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+.form {
+  display: grid;
+  gap: 20px;
+  max-width: 640px;
+}
+
+form {
+  display: grid;
+  gap: 12px;
+  background: var(--surface-strong);
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid var(--border);
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+input,
+select {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 999px;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 0.8rem;
+}

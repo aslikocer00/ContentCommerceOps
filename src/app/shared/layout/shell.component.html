@@ -1,0 +1,49 @@
+<app-loading-bar />
+<app-toast />
+
+<div class="shell" [ngClass]="{ collapsed: isCollapsed }">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark">SL</span>
+      <div class="brand-text">
+        <strong>SheerLuxe</strong>
+        <span>Ops Console</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a
+        *ngFor="let item of navItems"
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        class="nav-link"
+      >
+        {{ item.label }}
+      </a>
+    </nav>
+
+    <button class="collapse-btn" type="button" (click)="toggleSidebar()">
+      {{ isCollapsed ? 'Expand' : 'Collapse' }}
+    </button>
+  </aside>
+
+  <div class="content">
+    <header class="topbar">
+      <div>
+        <button class="ghost" type="button" (click)="toggleSidebar()">Menu</button>
+      </div>
+      <div class="topbar-actions">
+        <button class="ghost" type="button" (click)="toggleTheme()">Theme</button>
+        <div class="user" *ngIf="auth.user$ | async as user">
+          <span class="user-name">{{ user.name }}</span>
+          <span class="user-role">{{ user.role }}</span>
+        </div>
+        <button class="primary" type="button" (click)="logout()">Logout</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <router-outlet />
+    </main>
+  </div>
+</div>

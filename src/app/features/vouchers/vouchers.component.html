@@ -1,0 +1,55 @@
+<section class="vouchers">
+  <header class="header">
+    <div>
+      <h1>Vouchers & Affiliate</h1>
+      <p>Monitor merchant performance and manage voucher inventory.</p>
+    </div>
+    <a routerLink="/vouchers/new" class="primary">New Voucher</a>
+  </header>
+
+  <section class="metrics">
+    <div>
+      <span>Total Clicks</span>
+      <strong>{{ vouchers.reduce((acc, v) => acc + v.clicks, 0) }}</strong>
+    </div>
+    <div>
+      <span>Conversions</span>
+      <strong>{{ vouchers.reduce((acc, v) => acc + v.conversions, 0) }}</strong>
+    </div>
+    <div>
+      <span>Revenue</span>
+      <strong>£{{ vouchers.reduce((acc, v) => acc + v.revenue, 0) | number }}</strong>
+    </div>
+  </section>
+
+  <section class="filters" [formGroup]="filters">
+    <input type="search" formControlName="merchant" placeholder="Merchant" />
+    <select formControlName="active">
+      <option value="true">Active</option>
+      <option value="false">Inactive</option>
+    </select>
+    <select formControlName="sort">
+      <option value="expiryDate:asc">Expiry soonest</option>
+      <option value="revenue:desc">Top revenue</option>
+    </select>
+  </section>
+
+  <section class="table">
+    <div class="table-row header">
+      <span>Merchant</span>
+      <span>Code</span>
+      <span>Expiry</span>
+      <span>Status</span>
+      <span>Performance</span>
+      <span></span>
+    </div>
+    <div class="table-row" *ngFor="let voucher of vouchers">
+      <strong>{{ voucher.merchant }}</strong>
+      <span>{{ voucher.code }}</span>
+      <span>{{ voucher.expiryDate | date: 'MMM d, y' }}</span>
+      <app-status-badge [label]="voucher.active ? 'Active' : 'Paused'" [active]="voucher.active" />
+      <span>{{ voucher.clicks }} clicks · {{ voucher.conversions }} conv</span>
+      <a [routerLink]="['/vouchers', voucher.id, 'edit']">Edit</a>
+    </div>
+  </section>
+</section>

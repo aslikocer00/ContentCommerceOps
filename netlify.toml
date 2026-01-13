@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build"
+  publish = "dist/sheerluxe-console"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

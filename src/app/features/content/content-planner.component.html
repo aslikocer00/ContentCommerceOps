@@ -1,0 +1,68 @@
+<section class="planner">
+  <header class="header">
+    <div>
+      <h1>Content Planner</h1>
+      <p>Coordinate the editorial calendar with real-time workflow status.</p>
+    </div>
+    <div class="actions">
+      <button type="button" [class.active]="view === 'week'" (click)="toggleView('week')">
+        Week View
+      </button>
+      <button type="button" [class.active]="view === 'month'" (click)="toggleView('month')">
+        Month View
+      </button>
+      <a routerLink="/content/new" class="primary">New Content</a>
+    </div>
+  </header>
+
+  <section class="calendar">
+    <div class="calendar-header">
+      <h3>{{ view === 'week' ? 'This Week' : 'This Month' }}</h3>
+      <span class="muted">Editorial calendar snapshot</span>
+    </div>
+    <div class="calendar-grid">
+      <div class="slot" *ngFor="let item of content.slice(0, view === 'week' ? 6 : 12)">
+        <span class="slot-date">{{ item.publishDate | date: 'MMM d' }}</span>
+        <strong>{{ item.title }}</strong>
+        <small>{{ item.status }}</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="filters" [formGroup]="filters">
+    <input type="search" formControlName="query" placeholder="Search content" />
+    <select formControlName="category">
+      <option value="fashion">Fashion</option>
+      <option value="beauty">Beauty</option>
+      <option value="lifestyle">Lifestyle</option>
+    </select>
+    <select formControlName="status">
+      <option value="draft">Draft</option>
+      <option value="scheduled">Scheduled</option>
+      <option value="published">Published</option>
+    </select>
+  </section>
+
+  <section class="table">
+    <div class="table-row header">
+      <span>Title</span>
+      <span>Category</span>
+      <span>Status</span>
+      <span>Publish Date</span>
+      <span></span>
+    </div>
+    <div class="table-row" *ngFor="let item of content">
+      <div class="title">
+        <strong>{{ item.title }}</strong>
+        <small>{{ item.author }}</small>
+      </div>
+      <span class="pill">{{ item.category }}</span>
+      <span>{{ item.status }}</span>
+      <span>{{ item.publishDate | date: 'MMM d, y' }}</span>
+      <div class="row-actions">
+        <a [routerLink]="['/content', item.id]">View</a>
+        <a [routerLink]="['/content', item.id, 'edit']">Edit</a>
+      </div>
+    </div>
+  </section>
+</section>

@@ -1,0 +1,47 @@
+<section class="dashboard">
+  <header class="header">
+    <div>
+      <h1>Dashboard</h1>
+      <p>Morning pulse across editorial + commerce performance.</p>
+    </div>
+    <app-date-range-selector
+      [options]="ranges"
+      [selected]="selectedRange"
+      (select)="setRange($event)"
+    />
+  </header>
+
+  <section class="kpis">
+    <app-kpi-card *ngFor="let kpi of kpis" [data]="kpi" />
+  </section>
+
+  <section class="grid">
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Traffic Pulse</h3>
+        <span class="muted">Sessions</span>
+      </div>
+      <app-mini-line-chart [points]="chartPoints" />
+      <div class="legend">
+        <span>Peak around Wednesday</span>
+        <strong>+12%</strong>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Recent Activity</h3>
+        <span class="muted">Last 48 hours</span>
+      </div>
+      <div class="activity">
+        <div class="activity-item" *ngFor="let item of activity">
+          <div class="dot"></div>
+          <div>
+            <p>{{ item.message }}</p>
+            <span>{{ item.time }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

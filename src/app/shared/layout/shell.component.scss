@@ -1,0 +1,152 @@
+.shell {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+  background: var(--surface);
+  color: var(--text-primary);
+  transition: grid-template-columns 0.2s ease;
+}
+
+.shell.collapsed {
+  grid-template-columns: 86px 1fr;
+}
+
+.sidebar {
+  background: var(--surface-strong);
+  border-right: 1px solid var(--border);
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-link {
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  background: var(--accent-soft);
+  color: var(--text-primary);
+}
+
+.collapse-btn {
+  margin-top: auto;
+  border: 1px solid var(--border);
+  background: transparent;
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: var(--text-secondary);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  font-size: 0.85rem;
+}
+
+.user-name {
+  font-weight: 600;
+}
+
+.user-role {
+  color: var(--text-secondary);
+}
+
+.main {
+  padding: 24px;
+}
+
+button.primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+
+button.ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--text-primary);
+}
+
+@media (max-width: 960px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 240px;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    z-index: 10;
+  }
+
+  .shell.collapsed .sidebar {
+    transform: translateX(0);
+  }
+}

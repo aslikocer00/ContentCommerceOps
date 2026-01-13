@@ -1,0 +1,58 @@
+.builder {
+  display: grid;
+  gap: 20px;
+  max-width: 720px;
+}
+
+form {
+  display: grid;
+  gap: 16px;
+  background: var(--surface-strong);
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+input,
+select {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.blocks {
+  display: grid;
+  gap: 12px;
+}
+
+.block {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px dashed var(--border);
+}
+
+.primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 999px;
+}
+
+.ghost {
+  border: 1px solid var(--border);
+  background: transparent;
+  padding: 10px 16px;
+  border-radius: 999px;
+}

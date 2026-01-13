@@ -1,0 +1,146 @@
+.planner {
+  display: grid;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.actions button {
+  border: 1px solid var(--border);
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+.actions button.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.actions .primary {
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.calendar {
+  background: var(--surface-strong);
+  border-radius: 20px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.slot {
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--border);
+}
+
+.slot-date {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 1fr repeat(2, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+input,
+select {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.table {
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  padding: 12px 16px;
+  align-items: center;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.table-row.header {
+  background: var(--surface-strong);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.title {
+  display: grid;
+  gap: 4px;
+}
+
+.title small {
+  color: var(--text-secondary);
+}
+
+.pill {
+  background: var(--accent-soft);
+  color: var(--text-primary);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+.row-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.row-actions a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .table-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

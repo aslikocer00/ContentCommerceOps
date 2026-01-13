@@ -1,0 +1,40 @@
+.analytics {
+  display: grid;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.panel {
+  background: var(--surface-strong);
+  border-radius: 20px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+
+.breakdown {
+  display: grid;
+  gap: 10px;
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.breakdown-row:last-child {
+  border-bottom: none;
+}

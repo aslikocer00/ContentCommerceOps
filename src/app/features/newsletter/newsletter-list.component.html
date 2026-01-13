@@ -1,0 +1,27 @@
+<section class="newsletter">
+  <header class="header">
+    <div>
+      <h1>Newsletter</h1>
+      <p>Manage scheduled and sent newsletters across the week.</p>
+    </div>
+    <div class="actions">
+      <a routerLink="/newsletter/builder" class="primary">Build Newsletter</a>
+      <a routerLink="/newsletter/analytics" class="ghost">View Analytics</a>
+    </div>
+  </header>
+
+  <div class="table">
+    <div class="table-row header">
+      <span>Subject</span>
+      <span>Status</span>
+      <span>Send Date</span>
+      <span></span>
+    </div>
+    <div class="table-row" *ngFor="let newsletter of newsletters">
+      <strong>{{ newsletter.subject }}</strong>
+      <span>{{ newsletter.status }}</span>
+      <span>{{ newsletter.sendDate | date: 'MMM d, y' }}</span>
+      <a [routerLink]="['/newsletter/preview', newsletter.id]">Preview</a>
+    </div>
+  </div>
+</section>

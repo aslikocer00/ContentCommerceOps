@@ -1,0 +1,38 @@
+<div class="login">
+  <div class="card">
+    <div class="brand">
+      <span>SL</span>
+      <div>
+        <h1>SheerLuxe Ops Console</h1>
+        <p>Internal access for editorial + commerce teams.</p>
+      </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label>
+        Email
+        <input type="email" formControlName="email" />
+      </label>
+      <span class="error" *ngIf="form.controls.email.touched && form.controls.email.invalid">
+        Enter a valid email address.
+      </span>
+
+      <label>
+        Password
+        <input type="password" formControlName="password" />
+      </label>
+      <span class="error" *ngIf="form.controls.password.touched && form.controls.password.invalid">
+        Use at least 6 characters.
+      </span>
+
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'Signing in...' : 'Login' }}
+      </button>
+    </form>
+
+    <div class="helper">
+      Try <strong>admin@sheerluxe.com</strong>, <strong>editor@sheerluxe.com</strong>, or
+      <strong>commerce@sheerluxe.com</strong>
+    </div>
+  </div>
+</div>

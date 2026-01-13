@@ -1,0 +1,43 @@
+<section class="builder">
+  <header>
+    <h1>Newsletter Builder</h1>
+    <p>Create a scheduled email with hero content and modular blocks.</p>
+  </header>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <label>
+      Subject Line
+      <input type="text" formControlName="subject" />
+    </label>
+    <label>
+      Hero Pick
+      <select formControlName="heroContentId">
+        <option value="">Select content</option>
+        <option *ngFor="let item of contentOptions" [value]="item.id">
+          {{ item.title }}
+        </option>
+      </select>
+    </label>
+
+    <div class="blocks" formArrayName="blocks">
+      <div class="block" *ngFor="let block of blocks.controls; let i = index" [formGroupName]="i">
+        <label>
+          Block Title
+          <input type="text" formControlName="title" />
+        </label>
+        <label>
+          Content Item
+          <select formControlName="contentId">
+            <option value="">Select content</option>
+            <option *ngFor="let item of contentOptions" [value]="item.id">
+              {{ item.title }}
+            </option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <button type="button" class="ghost" (click)="addBlock()">Add Block</button>
+    <button type="submit" class="primary">Save Newsletter</button>
+  </form>
+</section>

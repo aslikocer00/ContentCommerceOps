@@ -1,0 +1,30 @@
+<section class="analytics">
+  <header class="header">
+    <div>
+      <h1>Newsletter Analytics</h1>
+      <p>Signals-driven insights for newsletter performance.</p>
+    </div>
+    <app-date-range-selector
+      [options]="ranges"
+      [selected]="selectedRange"
+      (select)="setRange($event)"
+    />
+  </header>
+
+  <div class="summary">
+    <div>
+      <h3>Average Opens</h3>
+      <strong>{{ average() }}%</strong>
+      <p>{{ avgLabel() }}</p>
+    </div>
+    <div>
+      <h3>Top Day</h3>
+      <strong>Wednesday</strong>
+      <p>Peak opens at 10:00</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <app-mini-line-chart [points]="points()" />
+  </div>
+</section>

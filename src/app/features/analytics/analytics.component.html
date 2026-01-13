@@ -1,0 +1,36 @@
+<section class="analytics" *ngIf="analytics">
+  <header class="header">
+    <div>
+      <h1>Analytics</h1>
+      <p>Trendlines across traffic, newsletters, and voucher conversions.</p>
+    </div>
+    <app-date-range-selector
+      [options]="ranges"
+      [selected]="selectedRange"
+      (select)="setRange($event)"
+    />
+  </header>
+
+  <section class="charts">
+    <div class="panel">
+      <h3>Traffic Trend</h3>
+      <app-mini-line-chart [points]="analytics.traffic" />
+    </div>
+    <div class="panel">
+      <h3>Newsletter Performance</h3>
+      <app-mini-line-chart [points]="analytics.newsletter" />
+    </div>
+    <div class="panel">
+      <h3>Voucher Conversions</h3>
+      <app-mini-line-chart [points]="analytics.vouchers" />
+    </div>
+  </section>
+
+  <section class="panel breakdown">
+    <h3>Breakdown by Category</h3>
+    <div class="breakdown-row" *ngFor="let row of analytics.breakdown">
+      <span>{{ row.label }}</span>
+      <strong>{{ row.value }}%</strong>
+    </div>
+  </section>
+</section>

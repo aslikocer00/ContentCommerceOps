@@ -1,0 +1,35 @@
+.analytics {
+  display: grid;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.summary > div {
+  background: var(--surface-strong);
+  border-radius: 20px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+
+.summary p {
+  color: var(--text-secondary);
+}
+
+.panel {
+  background: var(--surface-strong);
+  border-radius: 20px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}

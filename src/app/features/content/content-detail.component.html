@@ -1,0 +1,45 @@
+<section *ngIf="content" class="detail">
+  <header class="header">
+    <div>
+      <h1>{{ content.title }}</h1>
+      <p>{{ content.summary }}</p>
+    </div>
+    <a [routerLink]="['/content', content.id, 'edit']" class="primary">Edit</a>
+  </header>
+
+  <section class="meta">
+    <div>
+      <span>Category</span>
+      <strong>{{ content.category }}</strong>
+    </div>
+    <div>
+      <span>Status</span>
+      <strong>{{ content.status }}</strong>
+    </div>
+    <div>
+      <span>Author</span>
+      <strong>{{ content.author }}</strong>
+    </div>
+    <div>
+      <span>Publish Date</span>
+      <strong>{{ content.publishDate | date: 'MMM d, y' }}</strong>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="panel">
+      <h3>Related Items</h3>
+      <div class="related" *ngFor="let item of related">
+        <strong>{{ item.title }}</strong>
+        <span>{{ item.publishDate | date: 'MMM d' }}</span>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Recommendations</h3>
+      <ul>
+        <li *ngFor="let rec of recommendations">{{ rec }}</li>
+      </ul>
+      <p class="muted">Mocked editorial suggestions to surface alongside content.</p>
+    </div>
+  </section>
+</section>

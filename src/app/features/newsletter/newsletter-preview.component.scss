@@ -1,0 +1,44 @@
+.preview {
+  display: grid;
+  gap: 20px;
+}
+
+.frames {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.frame {
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.frame.desktop {
+  min-height: 420px;
+}
+
+.frame.mobile {
+  max-width: 320px;
+  justify-self: center;
+}
+
+.hero {
+  background: var(--accent-soft);
+  padding: 12px;
+  border-radius: 16px;
+}
+
+.block {
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 10px;
+}
+
+.block span {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}

@@ -1,0 +1,45 @@
+<section class="form">
+  <header>
+    <h1>{{ voucherId ? 'Edit Voucher' : 'Create Voucher' }}</h1>
+    <p>Manage voucher metadata and validate expiry timing.</p>
+  </header>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <label>
+      Merchant
+      <input type="text" formControlName="merchant" />
+    </label>
+    <label>
+      Code
+      <input type="text" formControlName="code" />
+    </label>
+    <label>
+      Active
+      <select formControlName="active">
+        <option [ngValue]="true">Active</option>
+        <option [ngValue]="false">Paused</option>
+      </select>
+    </label>
+    <label>
+      Expiry Date
+      <input type="date" formControlName="expiryDate" />
+    </label>
+    <div class="error" *ngIf="form.controls.expiryDate.touched && form.controls.expiryDate.errors">
+      Expiry date must be in the future.
+    </div>
+    <label>
+      Clicks
+      <input type="number" formControlName="clicks" />
+    </label>
+    <label>
+      Conversions
+      <input type="number" formControlName="conversions" />
+    </label>
+    <label>
+      Revenue
+      <input type="number" formControlName="revenue" />
+    </label>
+
+    <button type="submit" class="primary">Save Voucher</button>
+  </form>
+</section>
