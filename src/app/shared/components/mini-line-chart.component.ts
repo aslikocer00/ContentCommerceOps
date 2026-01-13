@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
+import { NgIf } from '@angular/common';
 import { AnalyticsPoint } from '../../core/models';
 
 @Component({
   selector: 'app-mini-line-chart',
   standalone: true,
+  imports: [NgIf],
   template: `
     <svg viewBox="0 0 120 40" class="chart" *ngIf="points.length">
       <polyline

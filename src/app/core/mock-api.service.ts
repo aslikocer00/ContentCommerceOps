@@ -88,8 +88,8 @@ export class MockApiService implements InMemoryDbService {
   post(reqInfo: RequestInfo): Observable<unknown> | undefined {
     if (reqInfo.collectionName === 'auth' && reqInfo.id === 'login') {
       const { email } = reqInfo.utils.getJsonBody(reqInfo.req) as { email: string };
-      const user = (reqInfo.utils.getDb().users as User[]).find((u) => u.email === email) ??
-        (reqInfo.utils.getDb().users as User[])[0];
+      const db = reqInfo.utils.getDb() as { users: User[] };
+      const user = db.users.find((u) => u.email === email) ?? db.users[0];
       const response = {
         token: 'fake-jwt-token',
         user,
@@ -105,7 +105,8 @@ export class MockApiService implements InMemoryDbService {
 
   get(reqInfo: RequestInfo): Observable<unknown> | undefined {
     if (reqInfo.collectionName === 'me') {
-      const user = (reqInfo.utils.getDb().users as User[])[0];
+      const db = reqInfo.utils.getDb() as { users: User[] };
+      const user = db.users[0];
       return reqInfo.utils.createResponse$(() => ({ body: user, status: 200 }));
     }
 

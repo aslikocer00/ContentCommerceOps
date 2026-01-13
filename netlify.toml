@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "dist/sheerluxe-console"
+  publish = "dist/sheerluxe-console/browser"
 
 [[redirects]]
   from = "/*"

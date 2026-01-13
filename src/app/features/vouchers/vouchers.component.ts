@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { DatePipe, NgFor } from '@angular/common';
+import { DatePipe, DecimalPipe, NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Subject, switchMap, takeUntil } from 'rxjs';
 import { ApiService } from '../../core/api.service';
@@ -11,7 +11,7 @@ import { StatusBadgeComponent } from '../../shared/components/status-badge.compo
 @Component({
   selector: 'app-vouchers',
   standalone: true,
-  imports: [ReactiveFormsModule, NgFor, DatePipe, RouterLink, StatusBadgeComponent],
+  imports: [ReactiveFormsModule, NgFor, DatePipe, DecimalPipe, RouterLink, StatusBadgeComponent],
   templateUrl: './vouchers.component.html',
   styleUrl: './vouchers.component.scss',
 })
@@ -30,6 +30,18 @@ export class VouchersComponent implements OnInit, OnDestroy {
     private state: AppStateService,
     private fb: FormBuilder
   ) {}
+
+  get totalClicks(): number {
+    return this.vouchers.reduce((acc, v) => acc + v.clicks, 0);
+  }
+
+  get totalConversions(): number {
+    return this.vouchers.reduce((acc, v) => acc + v.conversions, 0);
+  }
+
+  get totalRevenue(): number {
+    return this.vouchers.reduce((acc, v) => acc + v.revenue, 0);
+  }
 
   ngOnInit(): void {
     this.filters.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((value) => {

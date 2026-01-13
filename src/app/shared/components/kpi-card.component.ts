@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
+import { NgIf } from '@angular/common';
 import { Kpi } from '../../core/models';
 
 @Component({
   selector: 'app-kpi-card',
   standalone: true,
+  imports: [NgIf],
   template: `
     <article class="kpi">
       <p class="label">{{ data.label }}</p>

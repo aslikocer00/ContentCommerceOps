@@ -10,15 +10,15 @@
   <section class="metrics">
     <div>
       <span>Total Clicks</span>
-      <strong>{{ vouchers.reduce((acc, v) => acc + v.clicks, 0) }}</strong>
+      <strong>{{ totalClicks }}</strong>
     </div>
     <div>
       <span>Conversions</span>
-      <strong>{{ vouchers.reduce((acc, v) => acc + v.conversions, 0) }}</strong>
+      <strong>{{ totalConversions }}</strong>
     </div>
     <div>
       <span>Revenue</span>
-      <strong>£{{ vouchers.reduce((acc, v) => acc + v.revenue, 0) | number }}</strong>
+      <strong>£{{ totalRevenue | number }}</strong>
     </div>
   </section>
 

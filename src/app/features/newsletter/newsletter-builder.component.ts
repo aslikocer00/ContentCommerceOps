@@ -20,10 +20,7 @@ export class NewsletterBuilderComponent implements OnInit, OnDestroy {
   form = this.fb.group({
     subject: ['', [Validators.required, Validators.minLength(6)]],
     heroContentId: ['', Validators.required],
-    blocks: this.fb.array([
-      this.buildBlock(),
-      this.buildBlock(),
-    ]),
+    blocks: this.fb.array([this.buildBlock(), this.buildBlock()]),
   });
 
   constructor(private fb: FormBuilder, private api: ApiService, private router: Router) {}
@@ -49,12 +46,20 @@ export class NewsletterBuilderComponent implements OnInit, OnDestroy {
       return;
     }
 
+    const raw = this.form.getRawValue();
+    const payload = {
+      subject: raw.subject ?? '',
+      heroContentId: raw.heroContentId ?? '',
+      blocks: raw.blocks.map((block) => ({
+        title: block.title ?? '',
+        contentId: block.contentId ?? '',
+      })),
+      status: 'scheduled' as const,
+      sendDate: new Date().toISOString(),
+    };
+
     this.api
-      .createNewsletter({
-        ...this.form.getRawValue(),
-        status: 'scheduled',
-        sendDate: new Date().toISOString(),
-      })
+      .createNewsletter(payload)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => this.router.navigate(['/newsletter']));
   }

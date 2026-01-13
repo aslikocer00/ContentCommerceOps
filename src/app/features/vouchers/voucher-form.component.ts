@@ -1,6 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import {
+  FormBuilder,
+  ReactiveFormsModule,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 import { ApiService } from '../../core/api.service';
 import { Voucher } from '../../core/models';
@@ -8,7 +15,7 @@ import { Voucher } from '../../core/models';
 @Component({
   selector: 'app-voucher-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './voucher-form.component.html',
   styleUrl: './voucher-form.component.scss',
 })
