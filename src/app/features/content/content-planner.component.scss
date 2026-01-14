@@ -12,15 +12,15 @@
 
 .actions {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
   flex-wrap: wrap;
 }
 
 .actions button {
   border: 1px solid var(--border);
-  background: transparent;
-  padding: 8px 12px;
+  background: var(--surface-strong);
+  padding: 8px 14px;
   border-radius: 999px;
 }
 
@@ -31,18 +31,20 @@
 }
 
 .actions .primary {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
   color: #fff;
   padding: 8px 16px;
   border-radius: 999px;
   text-decoration: none;
+  box-shadow: var(--shadow);
 }
 
 .calendar {
   background: var(--surface-strong);
-  border-radius: 20px;
-  padding: 16px;
+  border-radius: 22px;
+  padding: 18px;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
 .calendar-grid {
@@ -59,11 +61,16 @@
   display: grid;
   gap: 6px;
   border: 1px solid var(--border);
+  transition: transform 0.2s ease;
+}
+
+.slot:hover {
+  transform: translateY(-3px);
 }
 
 .slot-date {
   font-size: 0.75rem;
-  color: var(--text-secondary);
+  color: var(--text-tertiary);
 }
 
 .filters {
@@ -77,14 +84,15 @@ select {
   border: 1px solid var(--border);
   padding: 10px 12px;
   border-radius: 12px;
-  background: var(--surface);
+  background: var(--surface-strong);
   color: var(--text-primary);
 }
 
 .table {
-  border-radius: 20px;
+  border-radius: 22px;
   border: 1px solid var(--border);
   overflow: hidden;
+  box-shadow: var(--shadow);
 }
 
 .table-row {
@@ -92,12 +100,17 @@ select {
   grid-template-columns: 2fr 1fr 1fr 1fr auto;
   padding: 12px 16px;
   align-items: center;
-  background: var(--surface);
+  background: var(--surface-strong);
   border-bottom: 1px solid var(--border);
+  transition: background 0.2s ease;
+}
+
+.table-row:hover {
+  background: var(--surface-muted);
 }
 
 .table-row.header {
-  background: var(--surface-strong);
+  background: var(--surface-muted);
   font-weight: 600;
   font-size: 0.85rem;
   color: var(--text-secondary);
@@ -113,7 +126,7 @@ select {
 }
 
 .title small {
-  color: var(--text-secondary);
+  color: var(--text-tertiary);
 }
 
 .pill {

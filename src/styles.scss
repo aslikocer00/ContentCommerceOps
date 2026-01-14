@@ -1,31 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
-  --surface: #f6f2ef;
+  --surface: #f4f4f2;
   --surface-strong: #ffffff;
-  --text-primary: #1f1b17;
-  --text-secondary: #6d6258;
-  --border: #e2d7cd;
-  --accent: #c05c41;
-  --accent-strong: #a44933;
-  --accent-soft: #f3d7cd;
-  --success: #2f9a6a;
-  --success-soft: #e5f6ee;
-  --danger: #b5453a;
+  --surface-muted: #f0ece7;
+  --text-primary: #1c1c1a;
+  --text-secondary: #5f5b55;
+  --text-tertiary: #8a837a;
+  --border: #e3ddd4;
+  --accent: #1f6feb;
+  --accent-strong: #1553b3;
+  --accent-soft: #dbe8ff;
+  --success: #1f8b5c;
+  --success-soft: #e4f4ec;
+  --danger: #b2453b;
+  --danger-soft: #f8e4e1;
+  --shadow: 0 18px 40px rgba(15, 17, 26, 0.12);
 }
 
 :root[data-theme='dark'] {
-  --surface: #1b1a19;
-  --surface-strong: #262423;
-  --text-primary: #f5f1ec;
-  --text-secondary: #b9afa5;
-  --border: #3a3531;
-  --accent: #e08b73;
-  --accent-strong: #c96b55;
-  --accent-soft: #3d2b25;
-  --success: #49c08a;
-  --success-soft: #25362f;
+  --surface: #0f1115;
+  --surface-strong: #171a21;
+  --surface-muted: #141820;
+  --text-primary: #f5f3ee;
+  --text-secondary: #b7b1a7;
+  --text-tertiary: #8f8a82;
+  --border: #2a2f3a;
+  --accent: #6aa3ff;
+  --accent-strong: #4b7bd6;
+  --accent-soft: #1d2d4d;
+  --success: #44c28a;
+  --success-soft: #1e3128;
   --danger: #e07a6f;
+  --danger-soft: #3a1f1c;
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -34,18 +42,46 @@
 
 body {
   margin: 0;
-  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
-  background: var(--surface);
+  font-family: 'Manrope', sans-serif;
+  background: radial-gradient(circle at top left, rgba(31, 111, 235, 0.08), transparent 40%),
+    radial-gradient(circle at 30% 20%, rgba(31, 139, 92, 0.1), transparent 45%),
+    var(--surface);
   color: var(--text-primary);
+  min-height: 100vh;
 }
 
 h1,
 h2,
 h3 {
-  font-family: 'Fraunces', 'DM Sans', serif;
+  font-family: 'Space Grotesk', sans-serif;
   margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
 }
 
 a {
   color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+::selection {
+  background: var(--accent-soft);
 }

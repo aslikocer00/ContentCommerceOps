@@ -17,11 +17,12 @@
 }
 
 .primary {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
   color: #fff;
   padding: 8px 16px;
   border-radius: 999px;
   text-decoration: none;
+  box-shadow: var(--shadow);
 }
 
 .ghost {
@@ -30,12 +31,14 @@
   border-radius: 999px;
   text-decoration: none;
   color: var(--text-primary);
+  background: var(--surface-strong);
 }
 
 .table {
-  border-radius: 20px;
+  border-radius: 22px;
   border: 1px solid var(--border);
   overflow: hidden;
+  box-shadow: var(--shadow);
 }
 
 .table-row {
@@ -43,12 +46,17 @@
   grid-template-columns: 2fr 1fr 1fr auto;
   padding: 12px 16px;
   align-items: center;
-  background: var(--surface);
+  background: var(--surface-strong);
   border-bottom: 1px solid var(--border);
+  transition: background 0.2s ease;
+}
+
+.table-row:hover {
+  background: var(--surface-muted);
 }
 
 .table-row.header {
-  background: var(--surface-strong);
+  background: var(--surface-muted);
   font-weight: 600;
   color: var(--text-secondary);
 }

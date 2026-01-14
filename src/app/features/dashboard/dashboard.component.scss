@@ -1,6 +1,6 @@
 .dashboard {
   display: grid;
-  gap: 24px;
+  gap: 28px;
 }
 
 .header {
@@ -13,33 +13,34 @@
 
 h1 {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 p {
-  margin: 4px 0 0;
+  margin: 6px 0 0;
   color: var(--text-secondary);
 }
 
 .kpis {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 16px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
 .panel {
   background: var(--surface-strong);
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 18px;
+  border-radius: 22px;
+  padding: 20px;
   display: grid;
   gap: 16px;
+  box-shadow: var(--shadow);
 }
 
 .panel-header {
@@ -49,7 +50,7 @@ p {
 }
 
 .muted {
-  color: var(--text-secondary);
+  color: var(--text-tertiary);
   font-size: 0.85rem;
 }
 
@@ -63,7 +64,7 @@ p {
 
 .activity {
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
 .activity-item {
@@ -71,6 +72,14 @@ p {
   grid-template-columns: 12px 1fr;
   gap: 12px;
   align-items: center;
+  padding: 10px;
+  border-radius: 12px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.activity-item:hover {
+  background: var(--accent-soft);
+  transform: translateX(4px);
 }
 
 .activity-item .dot {
@@ -81,6 +90,6 @@ p {
 }
 
 .activity-item span {
-  color: var(--text-secondary);
+  color: var(--text-tertiary);
   font-size: 0.8rem;
 }
