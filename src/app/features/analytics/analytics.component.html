@@ -11,26 +11,98 @@
     />
   </header>
 
-  <section class="charts">
-    <div class="panel">
-      <h3>Traffic Trend</h3>
-      <app-mini-line-chart [points]="analytics.traffic" />
+  <section class="controls">
+    <div class="metric-tabs">
+      <button
+        type="button"
+        *ngFor="let metric of metrics"
+        [class.active]="metric.key === selectedMetric"
+        (click)="setMetric(metric.key)"
+      >
+        {{ metric.label }}
+      </button>
     </div>
-    <div class="panel">
-      <h3>Newsletter Performance</h3>
-      <app-mini-line-chart [points]="analytics.newsletter" />
+    <button type="button" class="ghost" (click)="toggleSmoothing()">
+      {{ smoothing ? 'Disable smoothing' : 'Enable smoothing' }}
+    </button>
+  </section>
+
+  <section class="stats">
+    <div>
+      <span>Total</span>
+      <strong>{{ stats.total | number:'1.0-0' }}</strong>
+      <p>{{ selectedMetricUnit }}</p>
     </div>
-    <div class="panel">
-      <h3>Voucher Conversions</h3>
-      <app-mini-line-chart [points]="analytics.vouchers" />
+    <div>
+      <span>Average</span>
+      <strong>{{ stats.avg | number:'1.1-1' }}</strong>
+      <p>Per day</p>
+    </div>
+    <div>
+      <span>Peak</span>
+      <strong>{{ stats.peak | number:'1.1-1' }}</strong>
+      <p>Highest day</p>
+    </div>
+    <div>
+      <span>Momentum</span>
+      <strong>{{ stats.trend | number:'1.1-1' }}%</strong>
+      <p>{{ stats.trend >= 0 ? 'Growing' : 'Cooling off' }}</p>
     </div>
   </section>
 
-  <section class="panel breakdown">
-    <h3>Breakdown by Category</h3>
-    <div class="breakdown-row" *ngFor="let row of analytics.breakdown">
-      <span>{{ row.label }}</span>
-      <strong>{{ row.value }}%</strong>
+  <section class="chart-panel">
+    <div class="chart-header">
+      <div>
+        <h3>{{ selectedMetricLabel }} pulse</h3>
+        <span class="muted">Hover to explore daily values</span>
+      </div>
+      <div class="pill" [class.positive]="stats.change >= 0">
+        7-day {{ stats.change >= 0 ? 'lift' : 'dip' }} {{ stats.change | number:'1.1-1' }}%
+      </div>
+    </div>
+
+    <div class="chart">
+      <svg viewBox="0 0 320 120" (mousemove)="onMove($event)" (mouseleave)="clearHover()">
+        <defs>
+          <linearGradient id="area" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.35" />
+            <stop offset="100%" stop-color="var(--accent)" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <polyline [attr.points]="chartArea" fill="url(#area)"></polyline>
+        <polyline [attr.points]="chartPath" fill="none" stroke="var(--accent)" stroke-width="2.5"></polyline>
+        <circle
+          *ngIf="hoverPoint"
+          [attr.cx]="hoverPoint.x"
+          [attr.cy]="hoverPoint.y"
+          r="4"
+          fill="var(--accent-strong)"
+        ></circle>
+      </svg>
+      <div class="tooltip" *ngIf="hoverIndex >= 0">
+        {{ hoverLabel() }}
+      </div>
+    </div>
+  </section>
+
+  <section class="insights">
+    <div class="panel">
+      <h3>Quick insights</h3>
+      <ul>
+        <li *ngFor="let insight of insights">{{ insight }}</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Category breakdown</h3>
+      <div class="breakdown" *ngFor="let row of breakdownRows">
+        <div class="label">
+          <span>{{ row.label }}</span>
+          <strong>{{ row.value }}%</strong>
+        </div>
+        <div class="bar">
+          <span [style.width.%]="row.bar"></span>
+        </div>
+      </div>
     </div>
   </section>
 </section>

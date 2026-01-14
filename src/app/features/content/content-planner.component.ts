@@ -20,8 +20,8 @@ export class ContentPlannerComponent implements OnInit, OnDestroy {
   content: ContentItem[] = [];
 
   filters = this.fb.group({
-    category: ['fashion'],
-    status: ['scheduled'],
+    category: [''],
+    status: [''],
     query: [''],
   });
 

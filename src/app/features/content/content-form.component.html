@@ -34,8 +34,49 @@
       <input type="date" formControlName="publishDate" />
     </label>
     <label>
+      Read Time
+      <input type="text" formControlName="readTime" placeholder="e.g. 5 min" />
+    </label>
+    <label>
+      Hero Gradient
+      <select formControlName="heroGradient">
+        <option value="linear-gradient(135deg, #1f6feb, #6aa3ff)">Cobalt</option>
+        <option value="linear-gradient(135deg, #1f8b5c, #60d9a8)">Emerald</option>
+        <option value="linear-gradient(135deg, #c38b5f, #f5cba7)">Amber</option>
+        <option value="linear-gradient(135deg, #a65fc3, #e2b6ff)">Lavender</option>
+      </select>
+    </label>
+    <label>
       Summary
       <textarea rows="4" formControlName="summary"></textarea>
+    </label>
+    <label>
+      Channels (comma separated)
+      <input type="text" formControlName="channels" placeholder="Homepage, Newsletter, Social" />
+    </label>
+    <label>
+      Story Sections (one per line: Heading: Body)
+      <textarea rows="5" formControlName="sectionsText"></textarea>
+    </label>
+    <label>
+      Commerce Links (one per line: Label | Retailer | Price)
+      <textarea rows="4" formControlName="commerceText"></textarea>
+    </label>
+    <label>
+      SEO Title
+      <input type="text" formControlName="seoTitle" />
+    </label>
+    <label>
+      SEO Description
+      <textarea rows="3" formControlName="seoDescription"></textarea>
+    </label>
+    <label>
+      SEO Keywords (comma separated)
+      <input type="text" formControlName="seoKeywords" />
+    </label>
+    <label>
+      Editor Notes
+      <textarea rows="3" formControlName="editorNotes"></textarea>
     </label>
 
     <button type="submit" class="primary" [disabled]="loading">

@@ -26,7 +26,7 @@ export class AppStateService {
     page: 1,
     pageSize: 8,
     sort: 'publishDate:desc',
-    filters: { category: 'fashion', status: 'scheduled' },
+    filters: { category: '', status: '' },
   });
   readonly contentTableState$ = this.contentTableSubject.asObservable();
 

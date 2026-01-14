@@ -27,6 +27,25 @@ export interface ActivityItem {
   type: 'content' | 'voucher' | 'newsletter' | 'system';
 }
 
+export interface ContentSection {
+  heading: string;
+  body: string;
+}
+
+export interface CommerceLink {
+  label: string;
+  retailer: string;
+  price: string;
+  url: string;
+}
+
+export interface ContentPerformance {
+  views: number;
+  avgReadTime: string;
+  clickThrough: string;
+  revenue: string;
+}
+
 export interface ContentItem {
   id: string;
   title: string;
@@ -36,6 +55,18 @@ export interface ContentItem {
   publishDate: string;
   summary: string;
   tags: string[];
+  heroGradient?: string;
+  readTime?: string;
+  sectionHighlights?: ContentSection[];
+  commerceLinks?: CommerceLink[];
+  seo?: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
+  performance?: ContentPerformance;
+  channels?: string[];
+  editorNotes?: string;
 }
 
 export interface Newsletter {

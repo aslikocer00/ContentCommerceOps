@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { AsyncPipe, DatePipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, DatePipe, DecimalPipe, NgFor, NgIf } from '@angular/common';
 import { Subject, switchMap, takeUntil } from 'rxjs';
 import { ApiService } from '../../core/api.service';
 import { AppStateService } from '../../core/app-state.service';
@@ -9,7 +9,7 @@ import { ContentItem } from '../../core/models';
 @Component({
   selector: 'app-content-detail',
   standalone: true,
-  imports: [NgIf, NgFor, AsyncPipe, DatePipe, RouterLink],
+  imports: [NgIf, NgFor, AsyncPipe, DatePipe, DecimalPipe, RouterLink],
   templateUrl: './content-detail.component.html',
   styleUrl: './content-detail.component.scss',
 })

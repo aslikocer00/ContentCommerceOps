@@ -1,16 +1,17 @@
 .form {
   display: grid;
   gap: 20px;
-  max-width: 680px;
+  max-width: 760px;
 }
 
 form {
   display: grid;
   gap: 16px;
   background: var(--surface-strong);
-  border-radius: 20px;
-  padding: 20px;
+  border-radius: 22px;
+  padding: 22px;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
 label {
@@ -26,14 +27,15 @@ textarea {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 10px 12px;
-  background: var(--surface);
+  background: var(--surface-strong);
   color: var(--text-primary);
 }
 
 .primary {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
   color: #fff;
   border: none;
   padding: 10px 16px;
   border-radius: 999px;
+  box-shadow: var(--shadow);
 }

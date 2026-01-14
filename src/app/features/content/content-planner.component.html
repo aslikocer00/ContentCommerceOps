@@ -21,7 +21,7 @@
       <span class="muted">Editorial calendar snapshot</span>
     </div>
     <div class="calendar-grid">
-      <div class="slot" *ngFor="let item of content.slice(0, view === 'week' ? 6 : 12)">
+      <div class="slot" *ngFor="let item of content.slice(0, view === 'week' ? 10 : 20)">
         <span class="slot-date">{{ item.publishDate | date: 'MMM d' }}</span>
         <strong>{{ item.title }}</strong>
         <small>{{ item.status }}</small>
@@ -32,11 +32,13 @@
   <section class="filters" [formGroup]="filters">
     <input type="search" formControlName="query" placeholder="Search content" />
     <select formControlName="category">
+      <option value="">All categories</option>
       <option value="fashion">Fashion</option>
       <option value="beauty">Beauty</option>
       <option value="lifestyle">Lifestyle</option>
     </select>
     <select formControlName="status">
+      <option value="">All statuses</option>
       <option value="draft">Draft</option>
       <option value="scheduled">Scheduled</option>
       <option value="published">Published</option>
