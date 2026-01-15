@@ -1,44 +1,24 @@
 # SheerLuxe Content & Commerce Ops Console
 
-Internal dashboard demo for editorial + commerce teams to plan content, manage newsletters, and monitor affiliate performance.
+A demo Angular 17+ internal dashboard for editorial + commerce teams to plan content, manage newsletters, and monitor affiliate/voucher performance.
+
+## Product Showcase
+![SheerLuxe product preview](sheerLuxe.jpg)
 
 ## Tech Stack
-- Angular 17 (Standalone Components + Router)
-- TypeScript + RxJS + Angular Signals
-- SCSS with CSS variables (light/dark theme)
-- Angular in-memory-web-api for mocked REST endpoints
-- Karma/Jasmine for unit tests
+- Angular 17 (Standalone Components, Router)
+- TypeScript + RxJS + Signals
+- SCSS + CSS variables (light/dark theme)
+- Angular in-memory-web-api (mock REST)
 
-## Architecture Overview
-- Feature-based structure: `features/dashboard`, `features/content`, `features/newsletter`, `features/vouchers`, `features/analytics`, `features/settings`.
-- Lazy-loaded routes in `src/app/app.routes.ts` with auth + role guards.
-- Interceptors:
-  - `AuthInterceptor` injects a fake bearer token
-  - `LoadingInterceptor` toggles a global loading bar
-  - `ErrorInterceptor` normalizes errors and raises toast notifications
-- State:
-  - RxJS `BehaviorSubject` streams for auth, date range, table state, and selected content (`src/app/core/app-state.service.ts`)
-  - Angular Signals for derived newsletter analytics (`src/app/features/newsletter/newsletter-analytics.store.ts`)
-
-## Mock API
-Backed by `angular-in-memory-web-api` in `src/app/core/mock-api.service.ts`.
-
-Endpoints:
-- `POST /auth/login`
-- `GET /me`
-- `GET /kpis?from=&to=`
-- `GET /activity?from=&to=`
-- `GET /content?query=&category=&status=&page=&pageSize=&sort=`
-- `GET /content/:id`
-- `POST /content`
-- `PUT /content/:id`
-- `GET /newsletters?status=&page=&pageSize=`
-- `GET /newsletters/:id`
-- `POST /newsletters`
-- `GET /vouchers?merchant=&active=&page=&pageSize=&sort=`
-- `POST /vouchers`
-- `PUT /vouchers/:id`
-- `GET /analytics?from=&to=`
+## Features
+- Auth flow with role-based routes (Admin / Editor / Commerce)
+- Dashboard KPIs + activity feed + mini chart
+- Content planner with calendar, filters, and rich detail view
+- Newsletter builder, preview, analytics
+- Vouchers & affiliate performance tracking
+- Analytics with interactive charts, insights, and breakdowns
+- Settings with theme + feature toggles
 
 ## Local Development
 ```bash
@@ -46,25 +26,23 @@ npm install
 npm run start
 ```
 
-The app runs on `http://localhost:4200`.
-
 ## Tests
 ```bash
 npm run test
 ```
 
-## Environment Config
-Update `src/environments/environment.development.ts` or `src/environments/environment.ts` with a real `apiBaseUrl` when integrating with a backend.
-
-## Deployment (Vercel/Netlify)
-Build the app:
+## Deployment
+Build:
 ```bash
 npm run build
 ```
 
-SPA fallback:
-- **Vercel:** add a `vercel.json` with `rewrites` to `/index.html`.
-- **Netlify:** add a `_redirects` file with `/* /index.html 200`.
+For SPA hosting, use:
+- Netlify: `netlify.toml` (already included)
+- Vercel: `vercel.json` (already included)
 
-## Notes
-Default login emails: `admin@sheerluxe.com`, `editor@sheerluxe.com`, `commerce@sheerluxe.com` (any password with 6+ characters).
+## Demo Login
+Use any of these emails (password 6+ chars):
+- admin@sheerluxe.com
+- editor@sheerluxe.com
+- commerce@sheerluxe.com
